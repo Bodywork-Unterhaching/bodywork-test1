@@ -42,12 +42,16 @@
     .slot-group { display: none; flex-direction: column; gap: 16px; align-items: center; margin-top: 15px; margin-bottom: 20px; width: 100%; max-width: 500px; }
     .day-block { width: 100%; background: #ffffff; padding: 12px 15px; border-radius: 8px; border: 1px solid #e0e0e0; text-align: center; }
     .day-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; text-transform: capitalize; }
-    .time-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .time-grid { 
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 10px; 
+    }
     .time-badge {
       background-color: var(--accent); color: #ffffff; text-decoration: none; padding: 10px 16px;
-      border-radius: 6px; font-weight: 700; font-size: 0.9rem; display: inline-block;
+      border-radius: 6px; font-weight: 700; font-size: 0.9rem; display: block;
       transition: background-color 0.2s ease, transform 0.1s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      flex: 1 1 calc(50% - 10px); max-width: 200px; text-align: center;
+      width: 100%; max-width: none; text-align: center;
     }
     .time-badge:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
     footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }

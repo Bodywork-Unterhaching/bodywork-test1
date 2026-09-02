@@ -26,22 +26,13 @@
       background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
     }
     header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; }
+    header .subtitle { font-size: 1.2rem; margin-top: 10px; margin-bottom: 20px; font-weight: bold; color: var(--primary); }
     .header-hero-container {
-      position: relative; width: 100%; max-width: 550px; margin: 20px auto 15px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      position: relative; width: 100%; max-width: 550px; margin: 0 auto 15px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
     .header-hero-img {
       width: 100%; height: 380px; display: block; object-fit: cover;
-      /* Warm filter applied to match Bild 2 */
-      filter: sepia(12%) saturate(115%) brightness(96%);
     }
-    .header-hero-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(46, 77, 70, 0.35), rgba(70, 45, 30, 0.45));
-      display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; color: #ffffff;
-    }
-    .hero-overlay-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-    .hero-overlay-text { font-size: 0.95rem; line-height: 1.4; margin-bottom: 0; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.3); max-width: 420px; }
-    header .subtitle { font-size: 1.2rem; margin-top: 10px; margin-bottom: 12px; font-weight: bold; color: var(--primary); }
     header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
     nav {
       background: var(--accent); display: flex; justify-content: center; align-items: center;
@@ -99,7 +90,6 @@
       nav a { font-size: 0.8rem; }
       section { padding: 18px 14px; margin-bottom: 15px; }
       button.legal-btn { width: 100%; }
-      .hero-overlay-title { font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -107,14 +97,10 @@
 
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
-    <p class="subtitle">Sport- & Wellnessmassagen<br>in Unterhaching</p>
+    <p class="subtitle">Sport- und Wellnessmassagen</p>
     
     <div class="header-hero-container">
       <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
-      <div class="header-hero-overlay">
-        <div class="hero-overlay-title">Intensive Sportmassage oder entspannte Wellnessmassage – individuell auf dich abgestimmt</div>
-        <div class="hero-overlay-text">Persönlich. Ruhig. Ohne Zeitdruck.</div>
-      </div>
     </div>
 
     <div class="location-info">
@@ -226,11 +212,19 @@
       <div class="faq-container">
         <details class="faq-item">
           <summary class="faq-question">Wie kann ich einen Termin vereinbaren?</summary>
-          <div class="faq-answer">Am einfachsten direkt über WhatsApp. Du kannst deinen Wunschtermin anfragen und erhältst anschließend eine persönliche Bestätigung[cite: 2].</div>
+          <div class="faq-answer">Am einfachsten direkt über WhatsApp oder den Online-Kalender. Du wählst deinen Wunschtermin aus und erhältst eine persönliche Bestätigung[cite: 2].</div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">Wo findet die Massage statt?</summary>
           <div class="faq-answer">Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt. Die genaue Adresse sende ich dir bei der Buchungsbestätigung[cite: 2].</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Wie kann ich bezahlen?</summary>
+          <div class="faq-answer">Du kannst vor Ort bequem in bar oder per PayPal bezahlen[cite: 2].</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Was muss ich mitbringen?</summary>
+          <div class="faq-answer">Du musst nichts Spezielles mitbringen. Handtücher und alles Notwendige sind vor Ort vorhanden[cite: 2].</div>
         </details>
       </div>
     </section>

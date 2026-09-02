@@ -750,10 +750,11 @@ html_content = """<!DOCTYPE html>
       let container = document.getElementById('dynamic-weeks-container');
       if (!container) return;
 
-      const rows = csvText.split('\\n').slice(1);
+      const rows = csvText.split(/\\r?\\n/);
       const weeksMap = new Map();
 
-      rows.forEach(row => {
+      rows.forEach((row, index) => {
+        if (index === 0) return; // Kopfzeile überspringen
         const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
         if (cols.length >= 4) {
           const datumStr = cols[0];
@@ -761,6 +762,7 @@ html_content = """<!DOCTYPE html>
           const ende = cols[2];
           const status = cols[3].toLowerCase();
 
+          // Akzeptiert sowohl "frei" als auch "Frei"
           if (status === 'frei') {
             const parts = datumStr.split('.');
             if (parts.length === 3) {
@@ -870,7 +872,6 @@ html_content = """<!DOCTYPE html>
       btnElement.classList.toggle('active', isHidden);
     }
 
-    // Beim Laden der Seite die Termine direkt abrufen
     window.addEventListener('DOMContentLoaded', loadSlots);
   </script>
 </body>

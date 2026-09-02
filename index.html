@@ -1,4 +1,172 @@
-<div class="offerings-grid">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bodywork Unterhaching – Sport- & Wellnessmassagen</title>
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --accent: #2e4d46;
+      --accent-hover: #243f39;
+      --secondary-btn-bg: #e5e3dc;
+      --secondary-btn-hover: #dcdad3;
+      --bg: #f5f4ef;
+      --card-bg: #ededec;
+      --text: #1a1a1a;
+      --subtext: #4a4a4a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.5;
+    }
+    .section-header {
+      margin-bottom: 24px;
+    }
+    .section-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--subtext);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+      border: none;
+      padding-bottom: 0;
+    }
+    .section-lead {
+      font-size: 0.95rem;
+      color: var(--subtext);
+      margin: 0;
+      line-height: 1.5;
+    }
+    header {
+      background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
+    }
+    header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; }
+    header .subtitle { font-size: 1.2rem; margin-top: 10px; margin-bottom: 20px; font-weight: bold; color: var(--primary); }
+    .header-hero-container {
+      position: relative; width: 100%; max-width: 550px; margin: 0 auto 15px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .header-hero-img {
+      width: 100%; height: 380px; display: block; object-fit: cover;
+    }
+    header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
+    
+    nav {
+      background: var(--accent);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 20px;
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }
+    section {
+      background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); scroll-margin-top: 70px;
+    }
+    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.5rem; }
+    .offerings-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .offering-card {
+      background-color: var(--card-bg); border-radius: 10px; padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #e0e0df; width: 100%;
+    }
+    .offering-card h3 { margin: 0 0 4px 0; font-size: 1.15rem; color: var(--primary); }
+    .offering-subtitle { font-size: 0.85rem; color: var(--subtext); margin-bottom: 10px; font-weight: 600; }
+    .offering-card p { font-size: 0.9rem; color: var(--subtext); margin: 0 0 15px 0; line-height: 1.4; }
+    .offering-price { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; line-height: 1.35; }
+    .price-note { display: block; font-size: 0.8rem; font-weight: 700; color: #c53030; margin-top: 4px; }
+    .slot-btn {
+      display: inline-block; width: 100%; background-color: var(--accent); color: white;
+      text-decoration: none; padding: 12px 14px; border-radius: 8px; font-weight: bold;
+      font-size: 0.85rem; text-align: center; line-height: 1.3; transition: background-color 0.2s ease;
+      cursor: pointer; border: none;
+    }
+    .slot-btn:hover { background-color: var(--accent-hover); }
+    .secondary-btn {
+      display: inline-block; width: 100%; max-width: 400px; background-color: var(--secondary-btn-bg);
+      color: var(--primary); text-decoration: none; padding: 12px 18px; border-radius: 8px;
+      font-weight: 600; font-size: 0.85rem; margin-top: 8px; text-align: center; line-height: 1.3;
+      white-space: nowrap; border: 1px solid #d0cecf; transition: background-color 0.2s ease;
+    }
+    .secondary-btn:hover { background-color: var(--secondary-btn-hover); }
+    .faq-container { border: 1px solid #e0e0df; border-radius: 10px; background-color: #ffffff; overflow: hidden; margin-top: 20px; }
+    .faq-item { border-bottom: 1px solid #e0e0df; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 0.95rem; color: var(--primary); cursor: pointer; list-style: none; position: relative; }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-question::before { content: '▼'; display: inline-block; font-size: 0.7rem; margin-right: 10px; transition: transform 0.2s ease; }
+    details[open] .faq-question::before { transform: rotate(180deg); }
+    .faq-answer { padding: 0 20px 16px 36px; font-size: 0.9rem; color: var(--subtext); line-height: 1.5; }
+    footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }
+    .legal-content { display: none; font-size: 0.85rem; margin-top: 15px; text-align: left; }
+    .legal-btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    button.legal-btn {
+      background: #e5e3dc; border: 1px solid #d0cecf; padding: 12px 16px;
+      border-radius: 6px; cursor: pointer; font-weight: bold; color: var(--primary);
+      display: inline-block; font-size: 0.9rem; flex: 1 1 auto; text-align: center;
+    }
+    @media (max-width: 480px) {
+      .container { padding: 12px 10px; }
+      section { padding: 18px 14px; margin-bottom: 15px; }
+      button.legal-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bodywork<br>Unterhaching</h1>
+    <p class="subtitle">Sport- und Wellnessmassagen</p>
+    
+    <div class="header-hero-container">
+      <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
+    </div>
+
+    <div class="location-info">
+      Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt.
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#angebot">**AKTION**</a>
+    <a href="#bewertungen">Bewertungen</a>
+    <a href="#gutscheine">Gutscheine</a>
+    <a href="#ueber-mich">Über mich</a>
+    <a href="#faq">FAQ</a>
+    <a href="#rechtliches">Rechtliches</a>
+  </nav>
+
+  <div class="container">
+
+    <section id="angebot">
+      <div class="section-header">
+        <div class="section-eyebrow">Deine Möglichkeiten</div>
+        <h2 class="section-title">Welche Massage passt zu dir?</h2>
+        <p class="section-lead">Wähle die Behandlung, die zu deinem aktuellen Bedürfnis passt.</p>
+      </div>
+      <div class="offerings-grid">
         <div class="offering-card">
           <div>
             <h3>Sportmassage</h3>
@@ -40,3 +208,158 @@
           </div>
         </div>
       </div>
+
+      <div id="ueber-mich" style="margin-top: 35px; border-top: 2px solid var(--bg); padding-top: 25px;">
+        <h3 style="color: var(--primary); font-size: 1.3rem; margin-top: 0; margin-bottom: 15px;">Über mich</h3>
+        
+        <div style="text-align: center; margin: 20px 0;">
+         <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 3px solid var(--accent);">
+        </div>
+
+        <p style="font-weight: 600; font-size: 1.05rem; color: var(--primary);">Schön, dass du hier bist.</p>
+        <p style="color: var(--subtext);">Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
+        <p style="color: var(--subtext);">Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
+        <p style="color: var(--subtext);">Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
+        <p style="color: var(--subtext);">Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
+        
+        <p style="font-size: 0.8rem; color: var(--subtext); font-style: italic; margin-top: 20px; border-top: 1px solid var(--bg); padding-top: 10px;">
+          *Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.
+        </p>
+
+      </div>
+    </section>
+
+    <section id="bewertungen">
+      <h2>Das sagen meine Kunden</h2>
+      <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 15px;">
+        Aus Gründen des Datenschutzes und der Privatsphäre sind Kundenstimmen auf dieser Website mit abgekürzten Namen versehen. Vollständige und verifizierte Erfahrungsberichte findest du direkt in den öffentlichen Google-Bewertungen.
+      </p>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen. Er findet die Problemstellen sofort und behandelt sie äußerst professionell. Nach der Massage fühle ich mich deutlich lockerer und entspannter. Klare Empfehlung – ich komme gerne wieder!“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Maximilian T.</p>
+      </div>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Ich war gestern zum ersten Mal bei Rüdiger und habe mich vom ersten Moment an sehr wohlgefühlt. [...] Für mich stimmt hier einfach das Gesamtpaket: menschlich, fachlich und professionell. Eine klare Empfehlung für alle, die Wert auf eine hochwertige Behandlung legen. Ich komme gerne wieder!“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Stefanie H.</p>
+      </div>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Sportmassagen sind sehr zu empfehlen. Auf eigene Bedürfnisse wird nicht nur passiv eingegangen, sondern aktiv gefragt. Termine unkompliziert vereinbar und zu 100% eingehalten. Bin und bleibe Wiederholungstäter“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– K. R.</p>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <a class="secondary-btn" href="https://share.google/nzROIp1SwdZDZkXhr" target="_blank">
+          ⭐ Alle Google-Bewertungen ansehen
+        </a>
+      </div>
+    </section>
+
+    <!-- NEU: Gutscheine-Sektion direkt nach den Bewertungen -->
+    <section id="gutscheine">
+      <h2>Personalisierte Gutscheine</h2>
+      
+      <p style="font-weight: bold; color: var(--primary); margin-bottom: 5px;">Das perfekte Geschenk: Zeit zum Durchatmen.</p>
+      <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 15px;">
+        Massage verschenken zu Weihnachten, zum Geburtstag, Valentinstag, Muttertag oder Vatertag. Eine gezielte Auszeit für jemanden, dem du etwas Gutes tun möchtest.
+      </p>
+      <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 20px;">
+        Einfach Gutschein sichern und Entspannung schenken.
+      </p>
+
+      <div style="background-color: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 20px; border: 1px solid #e0e0df;">
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #ccc; font-size: 0.95rem;">
+          <span style="font-weight: 600; color: var(--primary);">Sportmassage (60 Min.)</span>
+          <span style="font-weight: 700; color: var(--primary);">59 €</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #ccc; font-size: 0.95rem;">
+          <span style="font-weight: 600; color: var(--primary);">Rücken- & Nackenmassage (45 Min.)</span>
+          <span style="font-weight: 700; color: var(--primary);">45 €</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.95rem;">
+          <span style="font-weight: 600; color: var(--primary);">Wellnessmassage (60 Min.)</span>
+          <span style="font-weight: 700; color: var(--primary);">55 €</span>
+        </div>
+      </div>
+
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 10px;">
+        Den personalisierten Gutschein erhältst du digital per E-Mail oder direkt vor Ort in Unterhaching. Die Bezahlung erfolgt per PayPal oder in bar.
+      </p>
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 20px;">
+        Die Terminbuchung nimmt die beschenkte Person anschließend einfach selbst über die Website vor.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo,%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Gutschein." target="_blank" style="background-color: var(--accent);">
+          🎁 Gutschein per WhatsApp anfragen
+        </a>
+        <a class="secondary-btn" href="mailto:info@bodywork-unterhaching.de?subject=Gutschein-Anfrage" style="width: 100%; max-width: 100%;">
+          ✉️ Gutschein per E-Mail anfragen
+        </a>
+        <a class="secondary-btn" href="tel:+4915560764392" style="width: 100%; max-width: 100%;">
+          📞 Direkt anrufen (+49 155 60764392)
+        </a>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--subtext); margin-bottom: 5px;">Gut zu wissen</div>
+      <h2 style="margin-top: 0; border: none; padding-bottom: 0;">Häufige Fragen</h2>
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary class="faq-question">Was muss ich mitbringen?</summary>
+          <div class="faq-answer">Du musst nichts Spezielles mitbringen. Handtücher und alles Notwendige sind vor Ort vorhanden.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Muss man Sportler sein, um eine Sportmassage zu bekommen?</summary>
+          <div class="faq-answer">Nein. Die Sportmassage ist für alle da, die sich eine kräftige, tiefgehende Behandlung wünschen – egal ob im Alltag viel gesessen wird, körperlich gearbeitet oder Sport getrieben wird.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Wie kann ich bezahlen?</summary>
+          <div class="faq-answer">Du kannst vor Ort bequem in bar oder per PayPal bezahlen.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Gibt es medizinisch etwas zu beachten?</summary>
+          <div class="faq-answer">Ja, wenn du starke Schmerzen hast oder eine frische Operation, wende dich vorher an deinen behandelnden Arzt.</div>
+        </details>
+      </div>
+    </section>
+
+    <section id="rechtliches">
+      <h2>Rechtliches</h2>
+      <div class="legal-btn-group">
+        <button class="legal-btn" onclick="toggleElement('imp-text')">Impressum anzeigen</button>
+        <button class="legal-btn" onclick="toggleElement('ds-text')">Datenschutz anzeigen</button>
+      </div>
+      <div id="imp-text" class="legal-content">
+        <h3>Impressum</h3>
+        <p>Bodywork Unterhaching<br>Rüdiger Hammer<br>Münchner Straße 7<br>82008 Unterhaching</p>
+      </div>
+      <div id="ds-text" class="legal-content">
+        <h3>Datenschutzerklärung</h3>
+        <p>Hosting über GitHub Pages.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
+  </footer>
+
+  <script>
+    function toggleElement(id) {
+      const el = document.getElementById(id);
+      if (el) { el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
+    }
+  </script>
+  <script>
+  window.scrollTo(0, 0);
+</script>
+</body>
+</html>

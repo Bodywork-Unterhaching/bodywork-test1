@@ -145,8 +145,8 @@
       font-size: 1.5rem; 
     }
     .offerings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 16px;
       margin-top: 20px;
     }
@@ -187,8 +187,8 @@
     .price-note {
       display: block;
       font-size: 0.8rem;
-      font-weight: normal;
-      color: #555;
+      font-weight: 700;
+      color: #c53030;
       margin-top: 4px;
     }
     .profile-container { 
@@ -243,6 +243,50 @@
     .secondary-btn:hover {
       background-color: var(--secondary-btn-hover);
     }
+    
+    /* FAQ Stile */
+    .faq-container {
+      border: 1px solid #e0e0df;
+      border-radius: 10px;
+      background-color: #ffffff;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e0e0df;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+    }
+    .faq-question::-webkit-details-marker {
+      display: none;
+    }
+    .faq-question::before {
+      content: '▼';
+      display: inline-block;
+      font-size: 0.7rem;
+      margin-right: 10px;
+      transition: transform 0.2s ease;
+    }
+    details[open] .faq-question::before {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 20px 16px 36px;
+      font-size: 0.9rem;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+
     footer { 
       text-align: center; 
       padding: 25px 15px; 
@@ -398,9 +442,6 @@
         padding: 18px 14px;
         margin-bottom: 15px;
       }
-      .offerings-grid {
-        grid-template-columns: 1fr;
-      }
       .voucher-list li {
         padding: 10px 0;
       }
@@ -445,6 +486,7 @@
     <a href="#gutscheine">Gutscheine</a>
     <a href="#kundenbewertungen">Bewertungen</a>
     <a href="#ueber-mich">Über mich</a>
+    <a href="#faq">FAQ</a>
     <a href="#rechtliches">Rechtliches</a>
   </nav>
 
@@ -466,7 +508,7 @@
           <div>
             <div class="offering-price">
               60 Minuten · 55 €
-              <span class="price-note" style="color: #c53030; font-weight: 700;">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span>
+              <span class="price-note">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span>
             </div>
             <button class="slot-btn" onclick="selectMassage('Sportmassage, 60 Minuten')">Termin buchen</button>
           </div>
@@ -562,7 +604,7 @@
       <h2>Das sagen meine Kunden</h2>
       
       <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 15px;">
-        Aus Gründen des Datenschutzes und der Privatsphäre sind Kundenstimmen auf dieser Website mit abgekürzten Namen versehen. Vollständige und verifizierte Erfahrungsberichte findest du direkt in den öffentlichen Google-Bewertungen.
+        Aus Gründen des Datenschutzes und der Privatsphäre sind Kundenstimmen auf dieser Website mit abgekürzten Namen versehen. Vollständige und verifizierte Erfahrungsberichte finden Sie direkt in den öffentlichen Google-Bewertungen.
       </p>
 
       <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
@@ -603,6 +645,56 @@
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
         <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
       </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--subtext); margin-bottom: 5px;">Gut zu wissen</div>
+      <h2 style="margin-top: 0; border: none; padding-bottom: 0;">Häufige Fragen</h2>
+
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary class="faq-question">Wie kann ich einen Termin vereinbaren?</summary>
+          <div class="faq-answer">
+            Am einfachsten direkt über WhatsApp. Du kannst deinen Wunschtermin anfragen und erhältst anschließend eine persönliche Bestätigung.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Wo findet die Massage statt?</summary>
+          <div class="faq-answer">
+            Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt. Die genaue Adresse sende ich dir bei der Buchungsbestätigung.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Muss ich sportlich aktiv sein, um eine Sportmassage zu buchen?</summary>
+          <div class="faq-answer">
+            Nein. Die Sportmassage eignet sich auch für Menschen, die eine kräftigere und dynamischere Massage bevorzugen.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Kann ich eine Massage verschenken?</summary>
+          <div class="faq-answer">
+            Ja. Gutscheine können personalisiert angefragt werden.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Sind die Massagen medizinische Behandlungen?</summary>
+          <div class="faq-answer">
+            Nein. Die Anwendungen dienen der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Kann ich auch eine individuelle Massage-Dauer anfragen?</summary>
+          <div class="faq-answer">
+            Ja. Schreib mir einfach kurz, welche Dauer du dir wünschst.
+          </div>
+        </details>
+      </div>
     </section>
 
     <section id="rechtliches">

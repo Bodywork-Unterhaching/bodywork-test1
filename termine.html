@@ -44,14 +44,15 @@
     .day-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; text-transform: capitalize; }
     .time-grid { 
       display: grid; 
-      grid-template-columns: repeat(2, 1fr); 
+     grid-template-columns: 1fr;
+    justify-items: center;
       gap: 10px; 
     }
     .time-badge {
       background-color: var(--accent); color: #ffffff; text-decoration: none; padding: 10px 16px;
       border-radius: 6px; font-weight: 700; font-size: 0.9rem; display: block;
       transition: background-color 0.2s ease, transform 0.1s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      width: 100%; max-width: none; text-align: center;
+      width: 100%; max-width: 300px; text-align: center;
     }
     .time-badge:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
     footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }

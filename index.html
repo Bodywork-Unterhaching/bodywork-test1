@@ -866,9 +866,15 @@ html_content = """<!DOCTYPE html>
       if (!el) return;
       
       const isHidden = window.getComputedStyle(el).display === 'none';
-      if,
-    </script>
+      el.style.display = isHidden ? 'flex' : 'none';
+      btnElement.classList.toggle('active', isHidden);
+    }
+
+    // Beim Laden der Seite die Termine direkt abrufen
+    window.addEventListener('DOMContentLoaded', loadSlots);
+  </script>
 </body>
 </html>"""
+
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_content)

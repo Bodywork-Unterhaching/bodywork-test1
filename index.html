@@ -201,6 +201,8 @@
       text-align: center;
       line-height: 1.3;
       transition: background-color 0.2s ease;
+      cursor: pointer;
+      border: none;
     }
     .slot-btn:hover {
       background-color: var(--accent-hover);
@@ -439,7 +441,7 @@
           </div>
           <div>
             <div class="offering-price">60 Minuten · 55 €<br><span style="font-size: 0.8rem; font-weight: normal; color: #555;">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span></div>
-            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20Sportmassage%20(60%20Minuten)%20anfragen." target="_blank">Termin buchen</a>
+            <button class="slot-btn" onclick="selectMassage('Sportmassage (60 Minuten)')">Termin buchen</button>
           </div>
         </div>
 
@@ -455,8 +457,8 @@
               45 Minuten · 45 €
             </div>
             <div style="display: flex; flex-direction: column; gap: 6px;">
-              <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20(30%20Minuten)%20anfragen." target="_blank">30 Min. buchen</a>
-              <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20(45%20Minuten)%20anfragen." target="_blank">45 Min. buchen</a>
+              <button class="slot-btn" onclick="selectMassage('Rücken- und Nackenmassage (30 Minuten)')">30 Min. buchen</button>
+              <button class="slot-btn" onclick="selectMassage('Rücken- und Nackenmassage (45 Minuten)')">45 Min. buchen</button>
             </div>
           </div>
         </div>
@@ -469,7 +471,7 @@
           </div>
           <div>
             <div class="offering-price">60 Minuten · 55 €</div>
-            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20Wellnessmassage%20(60%20Minuten)%20anfragen." target="_blank">Termin buchen</a>
+            <button class="slot-btn" onclick="selectMassage('Wellnessmassage (60 Minuten)')">Termin buchen</button>
           </div>
         </div>
       </div>
@@ -477,7 +479,7 @@
     
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine (Sportmassage)</h2>
+        <h2 id="calendar-title" style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine (Sportmassage (60 Minuten))</h2>
         <div style="font-size: 1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
         
         <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
@@ -527,7 +529,7 @@
       <p>Die Terminbuchung erfolgt anschließend direkt über die Website.</p>
 
       <div style="text-align: center; margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
-        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank" style="max-width: 400px;">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank" style="max-width: 400px; text-decoration: none;">
           🎁 Gutschein per WhatsApp anfragen
         </a>
         <a class="secondary-btn" href="mailto:Massage@bodywork-unterhaching.de?subject=Gutschein-Anfrage&body=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
@@ -542,6 +544,10 @@
     <section id="kundenbewertungen">
       <h2>Das sagen meine Kunden</h2>
       
+      <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 15px;">
+        Aus Gründen des Datenschutzes und der Privatsphäre sind Kundenstimmen auf dieser Website mit abgekürzten Namen versehen. Vollständige und verifizierte Erfahrungsberichte finden Sie direkt in den öffentlichen Google-Bewertungen.
+      </p>
+
       <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
         <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
         <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen. Er findet die Problemstellen sofort und behandelt sie äußerst professionell. Nach der Massage fühle ich mich deutlich lockerer und entspannter. Klare Empfehlung – ich komme gerne wieder!“</p>
@@ -689,6 +695,9 @@
 
     const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
+    let currentSelectedMassage = 'Sportmassage (60 Minuten)';
+    let rawCsvData = '';
+
     function formatShortDate(dateObj) {
       const d = String(dateObj.getDate()).padStart(2, '0');
       const m = String(dateObj.getMonth() + 1).padStart(2, '0');
@@ -712,6 +721,27 @@
       };
     }
 
+    function selectMassage(massageName) {
+      currentSelectedMassage = massageName;
+      
+      // Update calendar title heading
+      const titleEl = document.getElementById('calendar-title');
+      if (titleEl) {
+        titleEl.textContent = `Freie Termine (${massageName})`;
+      }
+
+      // Re-render slots with the new massage text
+      if (rawCsvData) {
+        processAndRenderSlots(rawCsvData);
+      }
+
+      // Smooth scroll to calendar section
+      const termineSection = document.getElementById('termine');
+      if (termineSection) {
+        termineSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
     async function loadSlots() {
       let container = document.getElementById('dynamic-weeks-container');
       if (!container) {
@@ -720,121 +750,126 @@
 
       try {
         const response = await fetch(csvUrl);
-        const data = await response.text();
-        const rows = data.split('\n').slice(1);
-
-        const weeksMap = new Map();
-
-        rows.forEach(row => {
-          const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
-          if (cols.length >= 4) {
-            const datumStr = cols[0];
-            const start = cols[1];
-            const ende = cols[2];
-            const status = cols[3].toLowerCase();
-
-            if (status === 'frei') {
-              const parts = datumStr.split('.');
-              if (parts.length === 3) {
-                const day = parseInt(parts[0], 10);
-                const month = parseInt(parts[1], 10);
-                const year = parseInt(parts[2], 10);
-                const dateObj = new Date(year, month - 1, day);
-
-                const weekInfo = getWeekRange(dateObj);
-
-                if (!weeksMap.has(weekInfo.key)) {
-                  weeksMap.set(weekInfo.key, {
-                    info: weekInfo,
-                    daysMap: new Map()
-                  });
-                }
-
-                const weekEntry = weeksMap.get(weekInfo.key);
-                const dayKey = datumStr;
-
-                if (!weekEntry.daysMap.has(dayKey)) {
-                  const wochentag = days[dateObj.getDay()];
-                  weekEntry.daysMap.set(dayKey, {
-                    wochentag,
-                    datumKurz: `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.`,
-                    datumFull: datumStr,
-                    slots: []
-                  });
-                }
-
-                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
-                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
-
-                weekEntry.daysMap.get(dayKey).slots.push({
-                  start,
-                  ende,
-                  waUrl
-                });
-              }
-            }
-          }
-        });
-
-        container.innerHTML = '';
-
-        if (weeksMap.size === 0) {
-          container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Aktuell sind keine freien Termine verfügbar.</div>';
-          return;
-        }
-
-        const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
-
-        sortedWeeks.forEach((week, index) => {
-          const weekId = `week-group-${index}`;
-          const isFirst = (index === 0);
-
-          const btn = document.createElement('button');
-          btn.className = isFirst ? 'week-toggle-btn active' : 'week-toggle-btn';
-          btn.innerHTML = `<span>${week.info.label}</span>`;
-          btn.onclick = () => toggleWeek(weekId, btn);
-
-          const slotGroup = document.createElement('div');
-          slotGroup.id = weekId;
-          slotGroup.className = 'slot-group';
-          if (isFirst) {
-            slotGroup.style.display = 'flex';
-          }
-
-          const sortedDays = Array.from(week.daysMap.values());
-
-          sortedDays.forEach(dayData => {
-            const dayBlock = document.createElement('div');
-            dayBlock.className = 'day-block';
-
-            const dayTitle = document.createElement('div');
-            dayTitle.className = 'day-title';
-            dayTitle.textContent = `${dayData.wochentag}, ${dayData.datumKurz}`;
-            dayBlock.appendChild(dayTitle);
-
-            const timeGrid = document.createElement('div');
-            timeGrid.className = 'time-grid';
-
-            dayData.slots.forEach(slot => {
-              const badge = document.createElement('a');
-              badge.href = slot.waUrl;
-              badge.target = '_blank';
-              badge.className = 'time-badge';
-              badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
-              timeGrid.appendChild(badge);
-            });
-
-            dayBlock.appendChild(timeGrid);
-            slotGroup.appendChild(dayBlock);
-          });
-
-          container.buttons ? null : container.appendChild(btn);
-          container.appendChild(slotGroup);
-        });
-
+        rawCsvData = await response.text();
+        processAndRenderSlots(rawCsvData);
       } catch (err) {
         container.innerHTML = '<div style="color: #c53030; font-size: 0.95rem;">Fehler beim Laden der Termine.</div>';
       }
+    }
+
+    function processAndRenderSlots(csvText) {
+      let container = document.getElementById('dynamic-weeks-container');
+      if (!container) return;
+
+      const rows = csvText.split('\n').slice(1);
+      const weeksMap = new Map();
+
+      rows.forEach(row => {
+        const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
+        if (cols.length >= 4) {
+          const datumStr = cols[0];
+          const start = cols[1];
+          const ende = cols[2];
+          const status = cols[3].toLowerCase();
+
+          if (status === 'frei') {
+            const parts = datumStr.split('.');
+            if (parts.length === 3) {
+              const day = parseInt(parts[0], 10);
+              const month = parseInt(parts[1], 10);
+              const year = parseInt(parts[2], 10);
+              const dateObj = new Date(year, month - 1, day);
+
+              const weekInfo = getWeekRange(dateObj);
+
+              if (!weeksMap.has(weekInfo.key)) {
+                weeksMap.set(weekInfo.key, {
+                  info: weekInfo,
+                  daysMap: new Map()
+                });
+              }
+
+              const weekEntry = weeksMap.get(weekInfo.key);
+              const dayKey = datumStr;
+
+              if (!weekEntry.daysMap.has(dayKey)) {
+                const wochentag = days[dateObj.getDay()];
+                weekEntry.daysMap.set(dayKey, {
+                  wochentag,
+                  datumKurz: `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.`,
+                  datumFull: datumStr,
+                  slots: []
+                });
+              }
+
+              const waText = `Hallo Rüdiger, ich möchte gerne einen Termin für eine ${currentSelectedMassage} buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
+              const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
+
+              weekEntry.daysMap.get(dayKey).slots.push({
+                start,
+                ende,
+                waUrl
+              });
+            }
+          }
+        }
+      });
+
+      container.innerHTML = '';
+
+      if (weeksMap.size === 0) {
+        container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Aktuell sind keine freien Termine verfügbar.</div>';
+        return;
+      }
+
+      const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
+
+      sortedWeeks.forEach((week, index) => {
+        const weekId = `week-group-${index}`;
+        const isFirst = (index === 0);
+
+        const btn = document.createElement('button');
+        btn.className = isFirst ? 'week-toggle-btn active' : 'week-toggle-btn';
+        btn.innerHTML = `<span>${week.info.label}</span>`;
+        btn.onclick = () => toggleWeek(weekId, btn);
+
+        const slotGroup = document.createElement('div');
+        slotGroup.id = weekId;
+        slotGroup.className = 'slot-group';
+        if (isFirst) {
+          slotGroup.style.display = 'flex';
+        }
+
+        const sortedDays = Array.from(week.daysMap.daysMap ? week.daysMap.values() : week.daysMap.values());
+
+        sortedDays.forEach(dayData => {
+          const dayBlock = document.createElement('div');
+          dayBlock.className = 'day-block';
+
+          const dayTitle = document.createElement('div');
+          dayTitle.className = 'day-title';
+          dayTitle.textContent = `${dayData.wochentag}, ${dayData.datumKurz}`;
+          dayBlock.appendChild(dayTitle);
+
+          const timeGrid = document.createElement('div');
+          timeGrid.className = 'time-grid';
+
+          dayData.slots.forEach(slot => {
+            const badge = document.createElement('a');
+            badge.href = slot.waUrl;
+            badge.target = '_blank';
+            badge.className = 'time-badge';
+            badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
+            timeGrid.appendChild(badge);
+          });
+
+          dayBlock.appendChild(timeGrid);
+          slotGroup.appendChild(dayBlock);
+        });
+
+        container.appendChild(btn);
+        container.appendChild(slotGroup);
+      });
     }
 
     function toggleWeek(id, btnElement) {

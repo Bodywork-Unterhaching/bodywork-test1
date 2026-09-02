@@ -146,23 +146,30 @@
     }
     .offerings-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
     .offering-card {
       background-color: var(--card-bg);
       border-radius: 10px;
-      padding: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       border: 1px solid #e0e0df;
+      width: 100%;
     }
     .offering-card h3 {
-      margin: 0 0 8px 0;
+      margin: 0 0 4px 0;
       font-size: 1.15rem;
       color: var(--primary);
+    }
+    .offering-subtitle {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      margin-bottom: 10px;
+      font-weight: 600;
     }
     .offering-card p {
       font-size: 0.9rem;
@@ -175,6 +182,14 @@
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .price-note {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: normal;
+      color: #555;
+      margin-top: 4px;
     }
     .profile-container { 
       text-align: center; 
@@ -367,7 +382,11 @@
       color: var(--accent);
       text-align: right;
     }
+
     @media (max-width: 480px) {
+      .container {
+        padding: 12px 10px;
+      }
       nav {
         gap: 6px 10px;
         padding: 10px;
@@ -377,6 +396,10 @@
       }
       section {
         padding: 18px 14px;
+        margin-bottom: 15px;
+      }
+      .offerings-grid {
+        grid-template-columns: 1fr;
       }
       .voucher-list li {
         padding: 10px 0;
@@ -437,10 +460,14 @@
         <div class="offering-card">
           <div>
             <h3>Sportmassage</h3>
+            <div class="offering-subtitle">Ganzkörperorientiert</div>
             <p>Kräftige, dynamische Massage mit gezieltem Druck – für aktive Menschen und alle, die eine intensivere Massage bevorzugen.</p>
           </div>
           <div>
-            <div class="offering-price">60 Minuten · 55 €<br><span style="font-size: 0.8rem; font-weight: normal; color: #555;">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span></div>
+            <div class="offering-price">
+              60 Minuten · 55 €
+              <span class="price-note">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span>
+            </div>
             <button class="slot-btn" onclick="selectMassage('Sportmassage, 60 Minuten')">Termin buchen</button>
           </div>
         </div>
@@ -637,7 +664,7 @@
 
         <p><strong>Kommunikation über WhatsApp:</strong><br>
         Für die Terminvereinbarung und Anfragen nutzen wir den Messenger-Dienst WhatsApp (WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland / Meta Platforms Inc.). Wenn Sie uns per WhatsApp kontaktieren, werden die von Ihnen übermittelten Daten (insbesondere Telefonnummer, Name und Chatnachrichten) verarbeitet.<br>
-        Rechtsgrundlage is Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/Erfüllung) sowie unser berechtigtes Interesse an einer effizienten Kommunikation (Art. 6 Abs. 1 lit. f DSGVO). Es kann nicht ausgeschlossen werden, dass Daten an Muttergesellschaften von WhatsApp in den USA übertragen werden. Die Nutzung erfolgt freiwillig. Sie können die Kommunikation über WhatsApp jederzeit ablehnen oder die Löschung verlangen.</p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/Erfüllung) sowie unser berechtigtes Interesse an einer effizienten Kommunikation (Art. 6 Abs. 1 lit. f DSGVO). Es kann nicht ausgeschlossen werden, dass Daten an Muttergesellschaften von WhatsApp in den USA übertragen werden. Die Nutzung erfolgt freiwillig. Sie können die Kommunikation über WhatsApp jederzeit ablehnen oder die Löschung verlangen.</p>
 
         <p><strong>Cookies:</strong><br>
         Unsere Website verwendet ausschließlich technisch notwendige Funktionen zum Betrieb der Seite. Es werden keine Marketing- oder Analyse-Cookies eingesetzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
@@ -714,18 +741,15 @@
     function selectMassage(massageName) {
       currentSelectedMassage = massageName;
       
-      // Update calendar title heading cleanly
       const titleEl = document.getElementById('calendar-title');
       if (titleEl) {
         titleEl.textContent = `Freie Termine (${massageName})`;
       }
 
-      // Re-render slots with the new massage text
       if (rawCsvData) {
         processAndRenderSlots(rawCsvData);
       }
 
-      // Smooth scroll to calendar section
       const termineSection = document.getElementById('termine');
       if (termineSection) {
         termineSection.scrollIntoView({ behavior: 'smooth' });
@@ -734,9 +758,7 @@
 
     async function loadSlots() {
       let container = document.getElementById('dynamic-weeks-container');
-      if (!container) {
-        return;
-      }
+      if (!container) return;
 
       try {
         const response = await fetch(csvUrl);
@@ -830,7 +852,7 @@
           slotGroup.style.display = 'flex';
         }
 
-        const sortedDays = Array.from(week.daysMap.daysMap ? week.daysMap.values() : week.daysMap.values());
+        const sortedDays = Array.from(week.daysMap.values());
 
         sortedDays.forEach(dayData => {
           const dayBlock = document.createElement('div');
@@ -879,11 +901,15 @@
     function toggleElement(id) {
       const el = document.getElementById(id);
       if (!el) return;
-      const currentDisplay = window.getComputedStyle(el).display;
-      el.style.display = currentDisplay === 'none' ? 'block' : 'none';
+      const currentDisp = window.getComputedStyle(el).display;
+      if (currentDisp === 'none') {
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
     }
 
-    loadSlots();
+    document.addEventListener('DOMContentLoaded', loadSlots);
   </script>
 </body>
 </html>

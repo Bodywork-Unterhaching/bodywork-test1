@@ -34,11 +34,34 @@
       width: 100%; height: 380px; display: block; object-fit: cover;
     }
     header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
+    
+    /* Navigation angepasst für einzeiliges horizontales Scrollen */
     nav {
-      background: var(--accent); display: flex; justify-content: center; align-items: center;
-      gap: 10px 14px; padding: 12px 15px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+      background: var(--accent);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
-    nav a { color: white; text-decoration: none; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
     .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }
     section {
       background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); scroll-margin-top: 70px;
@@ -86,8 +109,6 @@
     }
     @media (max-width: 480px) {
       .container { padding: 12px 10px; }
-      nav { gap: 6px 10px; padding: 10px; }
-      nav a { font-size: 0.8rem; }
       section { padding: 18px 14px; margin-bottom: 15px; }
       button.legal-btn { width: 100%; }
     }
@@ -108,19 +129,15 @@
     </div>
   </header>
 
-  <nav class="nav-bar">
-    <div class="nav-group primary">
-      <a href="index.html">Home</a>
-      <a href="#angebot">Angebot</a>
-      <a href="termine.html">Termine</a>
-      <a href="gutscheine">Gutscheine</a>
-      <a href="#bewertungen">Bewertungen</a>
-      <a href="uebermich">Über mich</a>
-    </div>
-    <div class="nav-group secondary">
-      <a href="#faq">FAQ</a>
-      <a href="#rechtliches">Rechtliches</a>
-    </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#angebot">Angebot</a>
+    <a href="termine.html">Termine</a>
+    <a href="gutscheine.html">Gutscheine</a>
+    <a href="#bewertungen">Bewertungen</a>
+    <a href="uebermich.html">Über mich</a>
+    <a href="#faq">FAQ</a>
+    <a href="#rechtliches">Rechtliches</a>
   </nav>
 
   <div class="container">

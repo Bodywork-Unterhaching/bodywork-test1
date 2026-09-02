@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -314,10 +314,10 @@
       text-transform: capitalize;
     }
     .time-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      justify-content: center;
+      justify-items: center;
     }
     .time-badge {
       background-color: var(--accent);
@@ -327,11 +327,11 @@
       border-radius: 6px;
       font-weight: 700;
       font-size: 0.9rem;
-      display: inline-block;
+      display: block;
+      width: 100%;
+      max-width: 210px;
       transition: background-color 0.2s ease, transform 0.1s ease;
       box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      flex: 1 1 calc(50% - 10px);
-      max-width: 200px;
       text-align: center;
     }
     .time-badge:hover {
@@ -387,8 +387,10 @@
       button.legal-btn {
         width: 100%;
       }
+      .time-grid {
+        grid-template-columns: 1fr;
+      }
       .time-badge {
-        flex: 1 1 100%;
         max-width: 100%;
       }
       .hero-overlay-title {
@@ -714,18 +716,15 @@
     function selectMassage(massageName) {
       currentSelectedMassage = massageName;
       
-      // Update calendar title heading cleanly
       const titleEl = document.getElementById('calendar-title');
       if (titleEl) {
         titleEl.textContent = `Freie Termine (${massageName})`;
       }
 
-      // Re-render slots with the new massage text
       if (rawCsvData) {
         processAndRenderSlots(rawCsvData);
       }
 
-      // Smooth scroll to calendar section
       const termineSection = document.getElementById('termine');
       if (termineSection) {
         termineSection.scrollIntoView({ behavior: 'smooth' });
@@ -751,7 +750,7 @@
       let container = document.getElementById('dynamic-weeks-container');
       if (!container) return;
 
-      const rows = csvText.split('\n').slice(1);
+      const rows = csvText.split('\\n').slice(1);
       const weeksMap = new Map();
 
       rows.forEach(row => {
@@ -792,7 +791,7 @@
                 });
               }
 
-              const waText = `Hallo Rüdiger, ich möchte gerne einen Termin für eine ${currentSelectedMassage} buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
+              const waText = `Hallo Rüdiger, ich möchte gerne einen Termin für eine ${currentSelectedMassage} buchen:\\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\\nUhrzeit: ${start} Uhr\\nBitte sende mir eine kurze Bestätigung.`;
               const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
               weekEntry.daysMap.get(dayKey).slots.push({
@@ -830,7 +829,7 @@
           slotGroup.style.display = 'flex';
         }
 
-        const sortedDays = Array.from(week.daysMap.daysMap ? week.daysMap.values() : week.daysMap.values());
+        const sortedDays = Array.from(week.daysMap.values());
 
         sortedDays.forEach(dayData => {
           const dayBlock = document.createElement('div');
@@ -849,7 +848,7 @@
             badge.href = slot.waUrl;
             badge.target = '_blank';
             badge.className = 'time-badge';
-            badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
+            badge.textContent = `${slot.start} Uhr`;
             timeGrid.appendChild(badge);
           });
 
@@ -867,23 +866,9 @@
       if (!el) return;
       
       const isHidden = window.getComputedStyle(el).display === 'none';
-      if (isHidden) {
-        el.style.display = 'flex';
-        btnElement.classList.add('active');
-      } else {
-        el.style.display = 'none';
-        btnElement.classList.remove('active');
-      }
-    }
-
-    function toggleElement(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const currentDisplay = window.getComputedStyle(el).display;
-      el.style.display = currentDisplay === 'none' ? 'block' : 'none';
-    }
-
-    loadSlots();
-  </script>
+      if,
+    </script>
 </body>
-</html>
+</html>"""
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)

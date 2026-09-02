@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gutscheine – Bodywork Unterhaching</title>
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --accent: #2e4d46;
+      --accent-hover: #243f39;
+      --secondary-btn-bg: #e5e3dc;
+      --secondary-btn-hover: #dcdad3;
+      --bg: #f5f4ef;
+      --card-bg: #ededec;
+      --text: #1a1a1a;
+      --subtext: #4a4a4a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.5;
+    }
+    header {
+      background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
+    }
+    header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; }
+    nav {
+      background: var(--accent); display: flex; justify-content: center; align-items: center;
+      gap: 10px 14px; padding: 12px 15px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+    }
+    nav a { color: white; text-decoration: none; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
+    .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }
+    section { background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.5rem; }
+    .slot-btn {
+      display: inline-block; width: 100%; background-color: var(--accent); color: white;
+      text-decoration: none; padding: 12px 14px; border-radius: 8px; font-weight: bold;
+      font-size: 0.85rem; text-align: center; cursor: pointer; border: none;
+    }
+    .slot-btn:hover { background-color: var(--accent-hover); }
+    .secondary-btn {
+      display: inline-block; width: 100%; max-width: 400px; background-color: var(--secondary-btn-bg);
+      color: var(--primary); text-decoration: none; padding: 12px 18px; border-radius: 8px;
+      font-weight: 600; font-size: 0.85rem; margin-top: 8px; text-align: center; border: 1px solid #d0cecf;
+    }
+    .voucher-list { list-style: none; padding: 0; margin: 20px 0; }
+    .voucher-list li { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #e0e0e0; }
+    .voucher-title { font-weight: 700; font-size: 0.95rem; }
+    .voucher-price { font-weight: 800; font-size: 1rem; color: var(--accent); }
+    footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bodywork<br>Unterhaching</h1>
+    <p style="font-weight: bold; margin-top: 10px;">Gutscheine</p>
+  </header>
+
+  <!-- Navigationsbanner: "Gutscheine" (aktuelle Seite) weggelassen -->
+  <nav class="nav-bar">
+    <a href="index.html">Home</a>
+    <a href="index.html#angebot">Angebot</a>
+    <a href="index.html#bewertungen">Bewertungen</a>
+    <a href="uebermich">Über mich</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#rechtliches">Rechtliches</a>
+  </nav>
+
+  <div class="container">
+    <section>
+      <h2>Personalisierte Gutscheine</h2>
+      <p><strong>Das perfekte Geschenk:<br>Zeit zum Durchatmen.</strong></p>
+      <p>Massage verschenken zu Weihnachten, zum Geburtstag, Valentinstag, Muttertag oder Vatertag. Eine gezielte Auszeit für jemanden, dem du etwas Gutes tun möchtest.</p>
+      <p>Einfach Gutschein sichern und Entspannung schenken.</p>
+      
+      <ul class="voucher-list">
+        <li><span class="voucher-title">Sportmassage (60 Min.)</span><span class="voucher-price">59 €</span></li>
+        <li><span class="voucher-title">Rücken- & Nackenmassage (45 Min.)</span><span class="voucher-price">45 €</span></li>
+        <li><span class="voucher-title">Rücken- & Nackenmassage (30 Min.)</span><span class="voucher-price">35 €</span></li>
+        <li><span class="voucher-title">Wellnessmassage (60 Min.)</span><span class="voucher-price">55 €</span></li>
+      </ul>
+
+      <p>Den personalisierten Gutschein erhältst du digital per E-Mail oder direkt vor Ort in Unterhaching. Die Bezahlung erfolgt per PayPal oder in bar.</p>
+      <p>Die Terminbuchung nimmt die beschenkte Person anschließend einfach selbst über die Website vor.</p>
+
+      <div style="text-align: center; margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank" style="max-width: 400px; text-decoration: none;">🎁 Gutschein per WhatsApp anfragen</a>
+        <a class="secondary-btn" href="mailto:Massage@bodywork-unterhaching.de?subject=Gutschein-Anfrage&body=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">✉️ Gutschein per E-Mail anfragen</a>
+        <a class="secondary-btn" href="tel:+4915560764392">📞 Direkt anrufen (+49 155 60764392)</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
+  </footer>
+</body>
+</html>

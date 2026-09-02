@@ -22,6 +22,32 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.5;
     }
+    .section-header {
+      margin-bottom: 24px;
+    }
+    .section-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--subtext);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+      border: none;
+      padding-bottom: 0;
+    }
+    .section-lead {
+      font-size: 0.95rem;
+      color: var(--subtext);
+      margin: 0;
+      line-height: 1.5;
+    }
     header {
       background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
     }
@@ -135,9 +161,11 @@
   <div class="container">
 
     <section id="angebot">
-      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--subtext); margin-bottom: 5px;">Deine Möglichkeiten</div>
-      <h2 style="margin-top: 0; border: none; padding-bottom: 0;">Welche Massage passt zu dir?</h2>
-      <p style="color: var(--subtext); font-size: 0.95rem; margin-top: 5px;">Wähle die Behandlung, die zu deinem aktuellen Bedürfnis passt.</p>
+      <div class="section-header">
+        <div class="section-eyebrow">Deine Möglichkeiten</div>
+        <h2 class="section-title">Welche Massage passt zu dir?</h2>
+        <p class="section-lead">Wähle die Behandlung, die zu deinem aktuellen Bedürfnis passt.</p>
+      </div>
       <div class="offerings-grid">
         <div class="offering-card">
           <div>

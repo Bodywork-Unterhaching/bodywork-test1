@@ -479,18 +479,18 @@
     </div>
   </header>
 
- <nav class="nav-bar">
-  <div class="nav-group primary">
-    <a href="#angebot">Angebot</a>
-    <a href="#gutscheine">Gutscheine</a>
-    <a href="#bewertungen">Bewertungen</a>
-    <a href="#ueber-mich">Über mich</a>
-  </div>
-  <div class="nav-group secondary">
-    <a href="#faq">FAQ</a>
-    <a href="#rechtliches">Rechtliches</a>
-  </div>
-</nav>
+  <nav class="nav-bar">
+    <div class="nav-group primary">
+      <a href="#angebot">Angebot</a>
+      <a href="#gutscheine">Gutscheine</a>
+      <a href="#bewertungen">Bewertungen</a>
+      <a href="#ueber-mich">Über mich</a>
+    </div>
+    <div class="nav-group secondary">
+      <a href="#faq">FAQ</a>
+      <a href="#rechtliches">Rechtliches</a>
+    </div>
+  </nav>
 
   <div class="container">
 
@@ -603,7 +603,8 @@
       </div>
     </section>
 
-    <section id="kundenbewertungen">
+    <!-- ID angepasst auf bewertungen (passend zum Navi-Link) -->
+    <section id="bewertungen">
       <h2>Das sagen meine Kunden</h2>
       
       <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 15px;">
@@ -810,6 +811,22 @@
     let currentSelectedMassage = 'Sportmassage, 60 Minuten';
     let rawCsvData = '';
 
+    function toggleElement(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+
+    function toggleGroup(groupId, btn) {
+      const group = document.getElementById(groupId);
+      if (group) {
+        const isHidden = group.style.display === 'none' || group.style.display === '';
+        group.style.display = isHidden ? 'flex' : 'none';
+        btn.classList.toggle('active', isHidden);
+      }
+    }
+
     function formatShortDate(dateObj) {
       const d = String(dateObj.getDate()).padStart(2, '0');
       const m = String(dateObj.getMonth() + 1).padStart(2, '0');
@@ -872,139 +889,89 @@
       const weeksMap = new Map();
 
       rows.forEach(row => {
-        // Trennung nach Semikolon oder Komma abfangen
         const delimiter = row.includes(';') ? ';' : ',';
         const cols = row.split(delimiter).map(c => c.replace(/"/g, '').trim());
 
         if (cols.length >= 4) {
           const datumStr = cols[0];
           const start = cols[1];
-          const ende = cols[2];
           const status = cols[3].toLowerCase();
 
           if (status === 'frei') {
             const parts = datumStr.split('.');
             if (parts.length === 3) {
               const day = parseInt(parts[0], 10);
-              const month = parseInt(parts[1], 10);
+              const month = parseInt(parts[1], 10) - 1;
               const year = parseInt(parts[2], 10);
-              const dateObj = new Date(year, month - 1, day);
+              const dateObj = new Date(year, month, day);
 
-              const weekInfo = getWeekRange(dateObj);
+              if (!isNaN(dateObj.getTime())) {
+                const weekInfo = getWeekRange(dateObj);
+                
+                if (!weeksMap.has(weekInfo.key)) {
+                  weeksMap.set(weekInfo.key, {
+                    label: weekInfo.label,
+                    daysMap: new Map()
+                  });
+                }
 
-              if (!weeksMap.has(weekInfo.key)) {
-                weeksMap.set(weekInfo.key, {
-                  info: weekInfo,
-                  daysMap: new Map()
-                });
+                const weekData = weeksMap.get(weekInfo.key);
+                const dayKey = datumStr;
+
+                if (!weekData.daysMap.has(dayKey)) {
+                  weekData.daysMap.set(dayKey, {
+                    dayName: days[dateObj.getDay()],
+                    dateStr: datumStr,
+                    slots: []
+                  });
+                }
+
+                weekData.daysMap.get(dayKey).slots.push(start);
               }
-
-              const weekEntry = weeksMap.get(weekInfo.key);
-              const dayKey = datumStr;
-
-              if (!weekEntry.daysMap.has(dayKey)) {
-                const wochentag = days[dateObj.getDay()];
-                weekEntry.daysMap.set(dayKey, {
-                  wochentag,
-                  datumKurz: `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.`,
-                  datumFull: datumStr,
-                  slots: []
-                });
-              }
-
-              const waText = "Hallo Rüdiger, ich möchte gerne einen Termin für eine " + currentSelectedMassage + " buchen:\nDatum: " + days[dateObj.getDay()] + ", " + datumStr + "\nUhrzeit: " + start + " - " + ende + " Uhr\nBitte sende mir eine kurze Bestätigung.";
-              const waUrl = "https://wa.me/" + phone + "?text=" + encodeURIComponent(waText);
-
-              weekEntry.daysMap.get(dayKey).slots.push({
-                start,
-                ende,
-                waUrl
-              });
             }
           }
         }
       });
 
-      container.innerHTML = '';
-
       if (weeksMap.size === 0) {
-        container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Aktuell sind keine freien Termine verfügbar.</div>';
+        container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Derzeit keine freien Termine verfügbar.</div>';
         return;
       }
 
-      const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
+      let html = '';
+      let weekIndex = 0;
 
-      sortedWeeks.forEach((week, index) => {
-        const weekId = `week-group-${index}`;
-        const isFirst = (index === 0);
+      weeksMap.forEach((weekData, weekKey) => {
+        const groupId = `week-group-${weekIndex}`;
+        const isFirstWeek = weekIndex === 0;
 
-        const btn = document.createElement('button');
-        btn.className = isFirst ? 'week-toggle-btn active' : 'week-toggle-btn';
-        btn.innerHTML = `<span>${week.info.label}</span>`;
-        btn.onclick = () => toggleWeek(weekId, btn);
+        html += `<button class="week-toggle-btn ${isFirstWeek ? 'active' : ''}" onclick="toggleGroup('${groupId}', this)">${weekData.label}</button>`;
+        html += `<div id="${groupId}" class="slot-group" style="display: ${isFirstWeek ? 'flex' : 'none'};">`;
 
-        const slotGroup = document.createElement('div');
-        slotGroup.id = weekId;
-        slotGroup.className = 'slot-group';
-        if (isFirst) {
-          slotGroup.style.display = 'flex';
-        }
+        weekData.daysMap.forEach(dayData => {
+          html += `
+            <div class="day-block">
+              <div class="day-title">${dayData.dayName}, ${dayData.dateStr}</div>
+              <div class="time-grid">
+          `;
 
-        const sortedDays = Array.from(week.daysMap.values());
-
-        sortedDays.forEach(dayData => {
-          const dayBlock = document.createElement('div');
-          dayBlock.className = 'day-block';
-
-          const dayTitle = document.createElement('div');
-          dayTitle.className = 'day-title';
-          dayTitle.textContent = `${dayData.wochentag}, ${dayData.datumKurz}`;
-          dayBlock.appendChild(dayTitle);
-
-          const timeGrid = document.createElement('div');
-          timeGrid.className = 'time-grid';
-
-          dayData.slots.forEach(slot => {
-            const badge = document.createElement('a');
-            badge.href = slot.waUrl;
-            badge.target = '_blank';
-            badge.className = 'time-badge';
-            badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
-            timeGrid.appendChild(badge);
+          dayData.slots.forEach(time => {
+            const msg = encodeURIComponent(`Hallo Rüdiger, ich möchte gerne folgenden Termin anfragen: ${currentSelectedMassage} am ${dayData.dayName}, ${dayData.dateStr} um ${time} Uhr.`);
+            const waUrl = `https://wa.me/${phone}?text=${msg}`;
+            html += `<a href="${waUrl}" target="_blank" class="time-badge">${time} Uhr</a>`;
           });
 
-          dayBlock.appendChild(timeGrid);
-          slotGroup.appendChild(dayBlock);
+          html += `
+              </div>
+            </div>
+          `;
         });
 
-        container.appendChild(btn);
-        container.appendChild(slotGroup);
+        html += `</div>`;
+        weekIndex++;
       });
-    }
 
-    function toggleWeek(id, btnElement) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      
-      const isHidden = window.getComputedStyle(el).display === 'none';
-      if (isHidden) {
-        el.style.display = 'flex';
-        btnElement.classList.add('active');
-      } else {
-        el.style.display = 'none';
-        btnElement.classList.remove('active');
-      }
-    }
-
-    function toggleElement(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const currentDisp = window.getComputedStyle(el).display;
-      if (currentDisp === 'none') {
-        el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
-      }
+      container.innerHTML = html;
     }
 
     document.addEventListener('DOMContentLoaded', loadSlots);

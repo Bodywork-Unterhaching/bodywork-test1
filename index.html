@@ -441,7 +441,7 @@
           </div>
           <div>
             <div class="offering-price">60 Minuten · 55 €<br><span style="font-size: 0.8rem; font-weight: normal; color: #555;">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span></div>
-            <button class="slot-btn" onclick="selectMassage('Sportmassage (60 Minuten)')">Termin buchen</button>
+            <button class="slot-btn" onclick="selectMassage('Sportmassage, 60 Minuten')">Termin buchen</button>
           </div>
         </div>
 
@@ -457,8 +457,8 @@
               45 Minuten · 45 €
             </div>
             <div style="display: flex; flex-direction: column; gap: 6px;">
-              <button class="slot-btn" onclick="selectMassage('Rücken- und Nackenmassage (30 Minuten)')">30 Min. buchen</button>
-              <button class="slot-btn" onclick="selectMassage('Rücken- und Nackenmassage (45 Minuten)')">45 Min. buchen</button>
+              <button class="slot-btn" onclick="selectMassage('Rücken- und Nackenmassage, 30 Minuten')">30 Min. buchen</button>
+              <button class="slot-btn" onclick="selectMassage('Rücken- und Nackenmassage, 45 Minuten')">45 Min. buchen</button>
             </div>
           </div>
         </div>
@@ -471,7 +471,7 @@
           </div>
           <div>
             <div class="offering-price">60 Minuten · 55 €</div>
-            <button class="slot-btn" onclick="selectMassage('Wellnessmassage (60 Minuten)')">Termin buchen</button>
+            <button class="slot-btn" onclick="selectMassage('Wellnessmassage, 60 Minuten')">Termin buchen</button>
           </div>
         </div>
       </div>
@@ -479,8 +479,7 @@
     
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-        <h2 id="calendar-title" style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine (Sportmassage (60 Minuten))</h2>
-        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
+        <h2 id="calendar-title" style="font-size: 2rem; margin: 0 0 15px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine (Sportmassage, 60 Minuten)</h2>
         
         <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
           Wähle direkt einen verfügbaren Termin aus der Live-Übersicht:
@@ -573,7 +572,7 @@
       <p>Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
       <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
       <p>Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
-      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben füst und genau weißt, was dich erwartet.</p>
+      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
         <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
       </p>
@@ -686,7 +685,7 @@
 
     const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
-    let currentSelectedMassage = 'Sportmassage (60 Minuten)';
+    let currentSelectedMassage = 'Sportmassage, 60 Minuten';
     let rawCsvData = '';
 
     function formatShortDate(dateObj) {
@@ -715,7 +714,7 @@
     function selectMassage(massageName) {
       currentSelectedMassage = massageName;
       
-      // Update calendar title heading
+      // Update calendar title heading cleanly
       const titleEl = document.getElementById('calendar-title');
       if (titleEl) {
         titleEl.textContent = `Freie Termine (${massageName})`;

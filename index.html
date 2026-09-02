@@ -35,30 +35,25 @@
     }
     header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
     
+    /* Navigation angepasst: Zentriert mit automatischem Zeilenumbruch */
     nav {
       background: var(--accent);
       display: flex;
-      justify-content: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
-      gap: 16px;
-      padding: 12px 15px;
+      gap: 12px 20px;
+      padding: 14px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    nav::-webkit-scrollbar {
-      display: none;
+      text-align: center;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       font-size: 0.85rem;
-      flex-shrink: 0;
     }
 
     .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }

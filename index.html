@@ -895,7 +895,10 @@
 
         const dateStr = cols[0];
         const timesStr = cols[1];
+        const status = cols[3] ? cols[3].toLowerCase() : '';
+
         if (!dateStr || !timesStr) return;
+        if (status !== 'frei') return; // Nur Zeilen übernehmen, bei denen "Frei" in Spalte D steht
 
         const dateParts = dateStr.split('.');
         if (dateParts.length !== 3) return;
@@ -925,7 +928,6 @@
               times: []
             };
           }
-          // Zeiten zusammenführen, falls ein Tag in mehreren Zeilen vorkommt
           times.forEach(t => {
             if (!weeksMap[weekInfo.key].daysMap[dateStr].times.includes(t)) {
               weeksMap[weekInfo.key].daysMap[dateStr].times.push(t);
@@ -975,7 +977,6 @@
           const timeGrid = document.createElement('div');
           timeGrid.className = 'time-grid';
 
-          // Zeiten aufsteigend sortieren
           dayData.times.sort((a, b) => {
             return a.localeCompare(b, undefined, { numeric: true });
           });

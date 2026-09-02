@@ -59,9 +59,16 @@
     header .subtitle {
       font-size: 1.2rem; 
       margin-top: 8px; 
-      margin-bottom: 20px; 
+      margin-bottom: 12px; 
       font-weight: bold; 
       color: var(--primary);
+    }
+    header .subtext-intro {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--subtext);
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
     header .location-info {
       font-size: 1rem; 
@@ -75,7 +82,7 @@
       display: flex; 
       justify-content: center;
       align-items: center;
-      gap: 12px 18px; 
+      gap: 10px 14px; 
       padding: 12px 15px; 
       position: sticky; 
       top: 0; 
@@ -86,7 +93,7 @@
       color: white; 
       text-decoration: none; 
       font-weight: bold; 
-      font-size: 0.9rem; 
+      font-size: 0.85rem; 
       white-space: nowrap;
     }
     .container { 
@@ -134,8 +141,6 @@
       border: 4px solid var(--accent); 
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     }
-
-    /* Hauptaktion / Primär-Button */
     .slot-btn {
       display: inline-block;
       width: 100%;
@@ -156,8 +161,6 @@
     .slot-btn:hover {
       background-color: var(--accent-hover);
     }
-
-    /* Sekundäraktionen */
     .secondary-btn {
       display: inline-block;
       width: 100%;
@@ -179,7 +182,6 @@
     .secondary-btn:hover {
       background-color: var(--secondary-btn-hover);
     }
-
     footer { 
       text-align: center; 
       padding: 25px 15px; 
@@ -290,7 +292,6 @@
       background-color: var(--accent-hover);
       transform: translateY(-1px);
     }
-    
     .voucher-list {
       list-style: none;
       padding: 0;
@@ -322,11 +323,11 @@
     }
     @media (max-width: 480px) {
       nav {
-        gap: 8px 14px;
+        gap: 6px 10px;
         padding: 10px;
       }
       nav a {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
       section {
         padding: 18px 14px;
@@ -352,6 +353,7 @@
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
     <div class="subtitle">Sport- und Wellnessmassagen</div>
+    <div class="subtext-intro">Entlastung für deinen Körper. Zeit für dich.<br>Sportmassage, Rücken- & Nackenmassage oder Wellnessmassage - persönlich, individuell und unkompliziert.</div>
     <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
     <div class="location-info">
       Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt.
@@ -362,13 +364,13 @@
     <a href="#termine">Termine</a>
     <a href="#weitere-massagen">Weitere Massagen</a>
     <a href="#gutscheine">Gutscheine</a>
+    <a href="#kundenbewertungen">Bewertungen</a>
     <a href="#ueber-mich">Über mich</a>
     <a href="#rechtliches">Rechtliches</a>
   </nav>
 
   <div class="container">
     
-    <!-- TERMIN BUCHUNG -->
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
         <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
@@ -394,7 +396,6 @@
       </div>
     </section>
 
-    <!-- WEITERE MASSAGEN -->
     <section id="weitere-massagen">
       <h2>Weitere Massagen</h2>
       <p>Gerne kannst du folgende Behandlungen direkt per WhatsApp, E-Mail oder telefonisch anfragen:</p>
@@ -430,7 +431,6 @@
       </div>
     </section>
 
-    <!-- GUTSCHEINE -->
     <section id="gutscheine">
       <h2>Gutscheine</h2>
       <p>Schreib mir einfach per WhatsApp, E-Mail oder ruf mich an, welchen Gutschein du verschenken möchtest:</p>
@@ -470,24 +470,49 @@
       </div>
     </section>
 
-    <!-- ÜBER MICH -->
+    <section id="kundenbewertungen">
+      <h2>Das sagen meine Kunden</h2>
+      
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen. Er findet die Problemstellen sofort und behandelt sie äußerst professionell. Nach der Massage fühle ich mich deutlich lockerer und entspannter. Klare Empfehlung – ich komme gerne wieder!“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Maximilian Tratzky</p>
+      </div>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Ich war gestern zum ersten Mal bei Rüdiger und habe mich vom ersten Moment an sehr wohlgefühlt. [...] Für mich stimmt hier einfach das Gesamtpaket: menschlich, fachlich und professionell. Eine klare Empfehlung für alle, die Wert auf eine hochwertige Behandlung legen. Ich komme gerne wieder!“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Stefanie Hoormann</p>
+      </div>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Sportmassagen sind sehr zu empfehlen. Auf eigene Bedürfnisse wird nicht nur passiv eingegangen, sondern aktiv gefragt. Termine unkompliziert vereinbar und zu 100% eingehalten. Bin und bleibe Wiederholungstäter“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– K R</p>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <a class="secondary-btn" href="https://share.google/nzROIp1SwdZDZkXhr" target="_blank">
+          ⭐ Alle Google-Bewertungen ansehen
+        </a>
+      </div>
+    </section>
+
     <section id="ueber-mich">
       <h2>Über mich</h2>
       <div class="profile-container">
         <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img">
       </div>
-      <p>Schön, dass du den Weg zu mir gefunden hast.</p>
-      <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
-      <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
-      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
-      <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
-      <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
+      <p>Schön, dass du hier bist.</p>
+      <p>Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
+      <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
+      <p>Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
+      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
         <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
       </p>
     </section>
 
-    <!-- RECHTLICHES -->
     <section id="rechtliches">
       <h2>Rechtliches</h2>
       <div class="legal-btn-group">

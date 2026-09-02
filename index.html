@@ -956,7 +956,7 @@
           `;
 
           dayData.slots.forEach(time => {
-            const msg = encodeURIComponent(`Hallo Rüdiger, ich möchte gerne folgenden Termin anfragen: ${currentSelectedMassage} am ${dayData.dayName}, ${dayData.dateStr} um ${time} Uhr.`);
+            const msg = encodeURIComponent(`Hallo Rüdiger, ich möchte gerne folgenden Termin buchen: ${currentSelectedMassage} am ${dayData.dayName}, ${dayData.dateStr} um ${time} Uhr.`);
             const waUrl = `https://wa.me/${phone}?text=${msg}`;
             html += `<a href="${waUrl}" target="_blank" class="time-badge">${time} Uhr</a>`;
           });

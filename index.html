@@ -144,18 +144,37 @@
       padding-bottom: 10px; 
       font-size: 1.5rem; 
     }
-    .price-list { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 20px; 
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
     }
-    .price-item { 
-      border-left: 4px solid var(--accent); 
-      padding-left: 12px; 
+    .offering-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #e0e0df;
     }
-    .price-item h3 { 
-      margin: 0 0 5px 0; 
-      color: var(--primary); 
+    .offering-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .offering-card p {
+      font-size: 0.9rem;
+      color: var(--subtext);
+      margin: 0 0 15px 0;
+      line-height: 1.4;
+    }
+    .offering-price {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
     }
     .profile-container { 
       text-align: center; 
@@ -172,18 +191,15 @@
     .slot-btn {
       display: inline-block;
       width: 100%;
-      max-width: 400px;
       background-color: var(--accent);
       color: white;
       text-decoration: none;
-      padding: 14px 18px;
+      padding: 12px 14px;
       border-radius: 8px;
       font-weight: bold;
-      font-size: 0.9rem;
-      margin-top: 10px;
+      font-size: 0.85rem;
       text-align: center;
       line-height: 1.3;
-      white-space: nowrap;
       transition: background-color 0.2s ease;
     }
     .slot-btn:hover {
@@ -399,8 +415,8 @@
   </header>
 
   <nav>
+    <a href="#angebot">Angebot</a>
     <a href="#termine">Termine</a>
-    <a href="#weitere-massagen">Weitere Massagen</a>
     <a href="#gutscheine">Gutscheine</a>
     <a href="#kundenbewertungen">Bewertungen</a>
     <a href="#ueber-mich">Über mich</a>
@@ -408,14 +424,64 @@
   </nav>
 
   <div class="container">
+
+    <section id="angebot">
+      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--subtext); margin-bottom: 5px;">Deine Möglichkeiten</div>
+      <h2 style="margin-top: 0; border: none; padding-bottom: 0;">Welche Massage passt zu dir?</h2>
+      <p style="color: var(--subtext); font-size: 0.95rem; margin-top: 5px;">Wähle die Behandlung, die zu deinem aktuellen Bedürfnis passt.</p>
+
+      <div class="offerings-grid">
+        <!-- Sportmassage -->
+        <div class="offering-card">
+          <div>
+            <h3>Sportmassage</h3>
+            <p>Kräftige, dynamische Massage mit gezieltem Druck – für aktive Menschen und alle, die eine intensivere Massage bevorzugen.</p>
+          </div>
+          <div>
+            <div class="offering-price">60 Minuten · 55 €<br><span style="font-size: 0.8rem; font-weight: normal; color: #555;">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span></div>
+            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20Sportmassage%20(60%20Minuten)%20anfragen." target="_blank">Termin buchen</a>
+          </div>
+        </div>
+
+        <!-- Rücken & Nacken -->
+        <div class="offering-card">
+          <div>
+            <h3>Rücken- & Nackenmassage</h3>
+            <p>Sanfte bis moderate Massage für Rücken, Schultern und Nacken – passend, wenn du viel sitzt oder gezielt entspannen möchtest.</p>
+          </div>
+          <div>
+            <div class="offering-price" style="margin-bottom: 8px;">
+              30 Minuten · 35 €<br>
+              45 Minuten · 45 €
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20(30%20Minuten)%20anfragen." target="_blank">30 Min. buchen</a>
+              <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20(45%20Minuten)%20anfragen." target="_blank">45 Min. buchen</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wellnessmassage -->
+        <div class="offering-card">
+          <div>
+            <h3>Wellnessmassage</h3>
+            <p>Ruhige, wohltuende Massage für alle, die abschalten und ihrem Körper eine bewusste Auszeit gönnen möchten.</p>
+          </div>
+          <div>
+            <div class="offering-price">60 Minuten · 55 €</div>
+            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Termin%20f%C3%BCr%20eine%20Wellnessmassage%20(60%20Minuten)%20anfragen." target="_blank">Termin buchen</a>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
+        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine (Sportmassage)</h2>
         <div style="font-size: 1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
         
         <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
-          Kräftige, dynamische Massage mit gezieltem Druck – ideal zur muskulären Lockerung und zur Unterstützung von Regeneration und körperlichem Wohlbefinden
+          Wähle direkt einen verfügbaren Termin aus der Live-Übersicht:
         </p>
         
         <div style="font-size: 1.15rem; font-style: italic; font-weight: bold; margin-bottom: 8px; color: #000;">
@@ -431,41 +497,6 @@
           <div style="color: #666; font-size: 0.95rem;">Termine werden geladen...</div>
         </div>
 
-      </div>
-    </section>
-
-    <section id="weitere-massagen">
-      <h2>Weitere Massagen</h2>
-      <p>Gerne kannst du folgende Behandlungen direkt per WhatsApp, E-Mail oder telefonisch anfragen:</p>
-      
-      <div class="price-list">
-        <div class="price-item">
-          <h3>Rücken- und Nackenmassage</h3>
-          <p>Sanfte bis moderate Massage zur Entspannung von Körper und Geist. Unterstützt das allgemeine Wohlbefinden und schafft eine wohltuende Auszeit vom Alltag.</p>
-          <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
-        </div>
-
-        <div class="price-item">
-          <h3>Wellnessmassage</h3>
-          <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
-          <p><strong>60 Minuten:</strong> 55 €</p>
-        </div>
-
-        <div class="price-item">
-          <h3>Individuelle Anfragen</h3>
-          <p>Sehr gerne biete ich dir auch Massagen in individuellen Längen an. Kontaktiere mich einfach direkt.</p>
-          <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px;">
-            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
-              💬 Individuelle Anfrage via WhatsApp
-            </a>
-            <a class="secondary-btn" href="mailto:Massage@bodywork-unterhaching.de?subject=Individuelle%20Anfrage%20Massage&body=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
-              ✉️ Individuelle Anfrage per E-Mail
-            </a>
-            <a class="secondary-btn" href="tel:+4915560764392">
-              📞 Direkt anrufen (+49 155 60764392)
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -496,7 +527,7 @@
       <p>Die Terminbuchung erfolgt anschließend direkt über die Website.</p>
 
       <div style="text-align: center; margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
-        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank" style="max-width: 400px;">
           🎁 Gutschein per WhatsApp anfragen
         </a>
         <a class="secondary-btn" href="mailto:Massage@bodywork-unterhaching.de?subject=Gutschein-Anfrage&body=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
@@ -514,19 +545,19 @@
       <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
         <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
         <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen. Er findet die Problemstellen sofort und behandelt sie äußerst professionell. Nach der Massage fühle ich mich deutlich lockerer und entspannter. Klare Empfehlung – ich komme gerne wieder!“</p>
-        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Maximilian Tratzky</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Maximilian T.</p>
       </div>
 
       <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
         <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
         <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Ich war gestern zum ersten Mal bei Rüdiger und habe mich vom ersten Moment an sehr wohlgefühlt. [...] Für mich stimmt hier einfach das Gesamtpaket: menschlich, fachlich und professionell. Eine klare Empfehlung für alle, die Wert auf eine hochwertige Behandlung legen. Ich komme gerne wieder!“</p>
-        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Stefanie Hoormann</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Stefanie H.</p>
       </div>
 
       <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--accent);">
         <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
         <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Sportmassagen sind sehr zu empfehlen. Auf eigene Bedürfnisse wird nicht nur passiv eingegangen, sondern aktiv gefragt. Termine unkompliziert vereinbar und zu 100% eingehalten. Bin und bleibe Wiederholungstäter“</p>
-        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– K R</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– K. R.</p>
       </div>
 
       <div style="text-align: center; margin-top: 15px;">
@@ -545,7 +576,7 @@
       <p>Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
       <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
       <p>Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
-      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
+      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühst und genau weißt, was dich erwartet.</p>
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
         <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
       </p>
@@ -797,7 +828,7 @@
             slotGroup.appendChild(dayBlock);
           });
 
-          container.appendChild(btn);
+          container.buttons ? null : container.appendChild(btn);
           container.appendChild(slotGroup);
         });
 

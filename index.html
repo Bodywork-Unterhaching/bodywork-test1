@@ -598,9 +598,10 @@
 
         <p><strong>Beschwerderecht:</strong><br>
         Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.<br>
-        Zuständig ist: Bayerisches Landesamt für Datenschutzaufsicht<br>
-        Waldtruderingstraße 101, 81675 München<br>
-        Telefon: 089 21267 0, E-Mail: poststelle@bayern.de</p>
+        Zuständig ist: Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)<br>
+        Promenade 18, 91522 Ansbach<br>
+        Postanschrift: Postfach 1344, 91504 Ansbach<br>
+        Telefon: 0981 18003-0, E-Mail: poststelle@lda.bayern.de</p>
 
         <p>© 2026 Bodywork Unterhaching</p>
       </div>
@@ -731,7 +732,7 @@
             slotGroup.style.display = 'flex';
           }
 
-          const sortedDays = Array.from(week.daysMap.values());
+          const sortedDays = Array.from(week.daysMap.daysMap ? week.daysMap.values() : week.daysMap.values());
 
           sortedDays.forEach(dayData => {
             const dayBlock = document.createElement('div');
@@ -755,7 +756,7 @@
             });
 
             dayBlock.appendChild(timeGrid);
-            slotGroup.appendChild(dayBlock);
+            slotGroup.dayBlock ? null : slotGroup.appendChild(dayBlock);
           });
 
           container.appendChild(btn);

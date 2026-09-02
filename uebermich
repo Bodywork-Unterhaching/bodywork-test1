@@ -10,6 +10,7 @@
       --accent: #2e4d46;
       --accent-hover: #243f39;
       --bg: #f5f4ef;
+      --card-bg: #ededec;
       --text: #1a1a1a;
       --subtext: #4a4a4a;
     }
@@ -31,7 +32,10 @@
     section { background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
     h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.5rem; }
     .profile-container { text-align: center; margin-bottom: 20px; }
-    .profile-img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid var(--accent); box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+    .profile-img {
+      width: 160px; height: 160px; object-fit: cover;
+      border-radius: 50%; border: 4px solid var(--accent); box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
     footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }
   </style>
 </head>
@@ -42,29 +46,30 @@
     <p style="font-weight: bold; margin-top: 10px;">Über mich</p>
   </header>
 
-  <!-- Navigationsbanner: "Über mich" (aktuelle Seite) weggelassen -->
   <nav class="nav-bar">
     <a href="index.html">Home</a>
     <a href="index.html#angebot">Angebot</a>
-    <a href="gutscheine.html">Gutscheine</a>
+    <a href="termine.html">Termine</a>
+    <a href="gutscheine">Gutscheine</a>
     <a href="index.html#bewertungen">Bewertungen</a>
+    <a href="uebermich">Über mich</a>
     <a href="index.html#faq">FAQ</a>
     <a href="index.html#rechtliches">Rechtliches</a>
   </nav>
 
   <div class="container">
-    <section id="ueber-mich">
+    <section>
       <h2>Über mich</h2>
       <div class="profile-container">
         <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img">
       </div>
-      <p>Schön, dass du hier bist.</p>
-      <p>Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
-      <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
-      <p>Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
-      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
+      <p>Schön, dass du hier bist[cite: 2].</p>
+      <p>Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching[cite: 2].</p>
+      <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben[cite: 2].</p>
+      <p>Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf[cite: 2].</p>
+      <p>Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet[cite: 2].</p>
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
-        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
+        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung[cite: 2].</em>
       </p>
     </section>
   </div>

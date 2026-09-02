@@ -35,7 +35,6 @@
     }
     header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
     
-    /* Navigation angepasst: Zentriert mit automatischem Zeilenumbruch */
     nav {
       background: var(--accent);
       display: flex;
@@ -124,9 +123,11 @@
   </header>
 
   <nav>
+    <a href="index.html">Home</a>
+    <a href="#angebot">Angebot</a>
     <a href="gutscheine.html">Gutscheine</a>
     <a href="#bewertungen">Bewertungen</a>
-    <a href="uebermich.html">Über mich</a>
+    <a href="#ueber-mich">Über mich</a>
     <a href="#faq">FAQ</a>
     <a href="#rechtliches">Rechtliches</a>
   </nav>
@@ -212,6 +213,26 @@
           ⭐ Alle Google-Bewertungen ansehen
         </a>
       </div>
+    </section>
+
+    <!-- NEU PLATZIERT: Über mich mit Foto -->
+    <section id="ueber-mich">
+      <h2>Über mich</h2>
+      
+      <div style="text-align: center; margin: 20px 0;">
+        <!-- Passe hier den Dateinamen deines Fotos an, z.B. foto.jpg -->
+        <img src="ruediger.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 3px solid var(--accent);">
+      </div>
+
+      <p style="font-weight: 600; font-size: 1.05rem; color: var(--primary);">Schön, dass du hier bist.</p>
+      <p style="color: var(--subtext);">Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
+      <p style="color: var(--subtext);">Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
+      <p style="color: var(--subtext);">Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
+      <p style="color: var(--subtext);">Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
+      
+      <p style="font-size: 0.8rem; color: var(--subtext); font-style: italic; margin-top: 20px; border-top: 1px solid var(--bg); pt-2;">
+        *Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.
+      </p>
     </section>
 
     <section id="faq">

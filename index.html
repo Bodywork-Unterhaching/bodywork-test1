@@ -46,15 +46,64 @@
       line-height: 1.1; 
       letter-spacing: -0.5px;
     }
-    .header-hero-img {
+    .header-hero-container {
+      position: relative;
       width: 100%;
       max-width: 550px;
-      height: auto;
       margin: 20px auto 15px auto;
-      display: block;
       border-radius: 12px;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .header-hero-img {
+      width: 100%;
+      height: 380px;
+      display: block;
       object-fit: cover;
+    }
+    .header-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .hero-overlay-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-overlay-text {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      font-weight: 500;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      max-width: 420px;
+    }
+    .hero-overlay-btn {
+      background-color: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .hero-overlay-btn:hover {
+      background-color: var(--accent-hover);
     }
     header .subtitle {
       font-size: 1.2rem; 
@@ -345,6 +394,9 @@
         flex: 1 1 100%;
         max-width: 100%;
       }
+      .hero-overlay-title {
+        font-size: 1.35rem;
+      }
     }
   </style>
 </head>
@@ -353,8 +405,16 @@
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
     <div class="subtitle">Sport- und Wellnessmassagen</div>
-    <div class="subtext-intro">Entlastung für deinen Körper. Zeit für dich.<br>Sportmassage, Rücken- & Nackenmassage oder Wellnessmassage - persönlich, individuell und unkompliziert.</div>
-    <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
+    
+    <div class="header-hero-container">
+      <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
+      <div class="header-hero-overlay">
+        <div class="hero-overlay-title">Entlastung für deinen Körper. Zeit für dich.</div>
+        <div class="hero-overlay-text">Professionelle Körperarbeit in Unterhaching.</div>
+        <a href="#termine" class="hero-overlay-btn">Termin anfragen</a>
+      </div>
+    </div>
+
     <div class="location-info">
       Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt.
     </div>

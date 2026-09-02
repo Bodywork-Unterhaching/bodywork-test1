@@ -37,14 +37,10 @@
       margin: 20px auto 15px auto; border-radius: 12px; overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
-    .header-hero-img { width: 100%; height: 380px; display: block; object-fit: cover; }
-    .header-hero-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.45); display: flex; flex-direction: column;
-      justify-content: center; align-items: center; padding: 20px; text-align: center; color: #ffffff;
+    .header-hero-img { 
+      width: 100%; height: 380px; display: block; object-fit: cover; 
+      filter: sepia(15%) saturate(115%) brightness(98%) contrast(102%);
     }
-    .hero-overlay-title { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-    .hero-overlay-text { font-size: 0.95rem; line-height: 1.4; margin-bottom: 0; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.3); max-width: 420px; }
     header .subtitle { font-size: 1.2rem; margin-top: 10px; margin-bottom: 12px; font-weight: bold; color: var(--primary); }
     header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
     nav {
@@ -126,10 +122,6 @@
     
     <div class="header-hero-container">
       <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
-      <div class="header-hero-overlay">
-        <div class="hero-overlay-title">Intensive Sportmassage oder entspannte Wellnessmassage – individuell auf dich abgestimmt</div>
-        <div class="hero-overlay-text">Persönlich. Ruhig. Ohne Zeitdruck.</div>
-      </div>
     </div>
 
     <div class="location-info">
@@ -231,11 +223,28 @@
       <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 15px;">
         Aus Gründen des Datenschutzes und der Privatsphäre sind Kundenstimmen auf dieser Website mit abgekürzten Namen versehen.
       </p>
+      
+      <!-- Rezension 1 -->
       <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
         <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
-        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen...“</p>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen. Nach der Sportmassage waren die Verspannungen im Rücken wie weggeblasen. Absolute Empfehlung!“</p>
         <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Maximilian T.</p>
       </div>
+
+      <!-- Rezension 2 -->
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Sehr professionell, ruhig und sauber. Man merkt sofort die fachliche Kompetenz als Sportmasseur. Komme definitiv regelmäßig wieder.“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Sarah K.</p>
+      </div>
+
+      <!-- Rezension 3 -->
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Perfekte Auszeit nach dem Training. Die Massage geht tief ins Gewebe, ohne dass es unangenehm wird. Top Atmosphäre in Unterhaching.“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Florian B.</p>
+      </div>
+
       <div style="text-align: center; margin-top: 15px;">
         <a class="secondary-btn" href="https://share.google/nzROIp1SwdZDZkXhr" target="_blank">⭐ Alle Google-Bewertungen ansehen</a>
       </div>
@@ -244,8 +253,10 @@
     <section id="ueber-mich">
       <h2>Über mich</h2>
       <div class="profile-container"><img src="profil.jpg" alt="Rüdiger Hammer" class="profile-img"></div>
-      <p>Schön, dass du hier bist. Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service.</p>
-      <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
+      <p>Schön, dass du da bist. Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service.</p>
+      <p>Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben. Im Alltag – geprägt von Leistungsdruck, langem Sitzen oder intensivem Training – verlernt der Körper oft, in die Entspannung zu finden. Genau hier setze ich an.</p>
+      <p>Meine Behandlungen verbinden fundiertes Fachwissen mit einer ruhigen, klaren Atmosphäre. Ohne Hektik, ohne Massenabfertigung, sondern individuell auf deine Bedürfnisse abgestimmt.</p>
+      <p>Ich freue mich darauf, dich persönlich in Unterhaching begrüßen zu dürfen.</p>
     </section>
 
     <section id="faq">
@@ -254,7 +265,15 @@
       <div class="faq-container">
         <details class="faq-item">
           <summary class="faq-question">Wie kann ich einen Termin vereinbaren?</summary>
-          <div class="faq-answer">Am einfachsten direkt über WhatsApp über den Live-Terminkalender.</div>
+          <div class="faq-answer">Am einfachsten direkt über WhatsApp über den Live-Terminkalender. Wähle deinen Wunschtermin aus, klicke darauf, und es öffnet sich direkt eine vorbereitete Nachricht an mich.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Wie bezahle ich die Massage?</summary>
+          <div class="faq-answer">Du kannst unkompliziert vor Ort in bar oder vorab per PayPal bezahlen.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Was muss ich mitbringen?</summary>
+          <div class="faq-answer">Gar nichts. Handtücher und alles Notwendige sind vor Ort vorhanden.</div>
         </details>
       </div>
     </section>
@@ -263,15 +282,15 @@
       <h2>Rechtliches</h2>
       <div class="legal-btn-group">
         <button class="legal-btn" onclick="toggleElement('imp-text')">Impressum anzeigen</button>
-        <button class="legal-btn" onclick="toggleElement('ds-text')end">Datenschutz anzeigen</button>
+        <button class="legal-btn" onclick="toggleElement('ds-text')">Datenschutz anzeigen</button>
       </div>
       <div id="imp-text" class="legal-content">
         <h3>Impressum</h3>
-        <p>Bodywork Unterhaching<br>Rüdiger Hammer<br>Münchner Straße 7<br>82008 Unterhaching</p>
+        <p>Bodywork Unterhaching<br>Rüdiger Hammer<br>Münchner Straße 7<br>82008 Unterhaching<br><br>E-Mail: Massage@bodywork-unterhaching.de<br>Telefon: +49 155 60764392</p>
       </div>
       <div id="ds-text" class="legal-content">
         <h3>Datenschutzerklärung</h3>
-        <p>Hosting über GitHub Pages...</p>
+        <p>Hosting über GitHub Pages. Bei der Nutzung von WhatsApp zur Terminvereinbarung gelten die Datenschutzbestimmungen von Meta Platforms Ireland Limited.</p>
       </div>
     </section>
 

@@ -77,47 +77,26 @@
       color: #ffffff;
     }
     .hero-overlay-title {
-      font-size: 1.6rem;
+      font-size: 1.45rem;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.25;
       margin-bottom: 12px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     .hero-overlay-text {
       font-size: 0.95rem;
       line-height: 1.4;
-      margin-bottom: 20px;
+      margin-bottom: 0;
       font-weight: 500;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
       max-width: 420px;
     }
-    .hero-overlay-btn {
-      background-color: var(--accent);
-      color: #ffffff;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: background-color 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .hero-overlay-btn:hover {
-      background-color: var(--accent-hover);
-    }
     header .subtitle {
       font-size: 1.2rem; 
-      margin-top: 8px; 
+      margin-top: 10px; 
       margin-bottom: 12px; 
       font-weight: bold; 
       color: var(--primary);
-    }
-    header .subtext-intro {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--subtext);
-      margin-bottom: 15px;
-      line-height: 1.4;
     }
     header .location-info {
       font-size: 1rem; 
@@ -395,7 +374,7 @@
         max-width: 100%;
       }
       .hero-overlay-title {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
       }
     }
   </style>
@@ -404,14 +383,13 @@
 
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
-    <div class="subtitle">Sport- und Wellnessmassagen</div>
+    <div class="subtitle">Sport- & Wellnessmassagen in Unterhaching</div>
     
     <div class="header-hero-container">
       <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
       <div class="header-hero-overlay">
-        <div class="hero-overlay-title">Entlastung für deinen Körper. Zeit für dich.</div>
-        <div class="hero-overlay-text">Professionelle Körperarbeit in Unterhaching.</div>
-        <a href="#termine" class="hero-overlay-btn">Termin anfragen</a>
+        <div class="hero-overlay-title">Intensive Sportmassage oder entspannte Wellnessmassage – individuell auf dich abgestimmt</div>
+        <div class="hero-overlay-text">Persönlich. Ruhig. Ohne Zeitdruck.</div>
       </div>
     </div>
 
@@ -792,7 +770,7 @@
             slotGroup.style.display = 'flex';
           }
 
-          const sortedDays = Array.from(week.daysMap.daysMap ? week.daysMap.values() : week.daysMap.values());
+          const sortedDays = Array.from(week.daysMap.values());
 
           sortedDays.forEach(dayData => {
             const dayBlock = document.createElement('div');
@@ -816,7 +794,7 @@
             });
 
             dayBlock.appendChild(timeGrid);
-            slotGroup.dayBlock ? null : slotGroup.appendChild(dayBlock);
+            slotGroup.appendChild(dayBlock);
           });
 
           container.appendChild(btn);

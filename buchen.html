@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termin buchen – Bodywork Unterhaching</title>
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --accent: #2e4d46;
+      --accent-hover: #243f39;
+      --bg: #f5f4ef;
+      --card-bg: #ededec;
+      --text: #1a1a1a;
+      --subtext: #4a4a4a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.5;
+    }
+    header {
+      background-color: var(--bg); color: var(--primary);
+      text-align: center; padding: 30px 20px 10px 20px; max-width: 750px; margin: 0 auto;
+    }
+    header h1 { margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+    nav {
+      background: var(--accent); display: flex; justify-content: center;
+      align-items: center; gap: 10px 14px; padding: 12px 15px;
+      position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+    }
+    nav a { color: white; text-decoration: none; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
+    .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }
+    section { background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.5rem; }
+    
+    button.week-toggle-btn {
+      background-color: #e5e3dc; color: var(--primary); border: 1px solid #d0cecf;
+      padding: 12px 18px; border-radius: 8px; cursor: pointer; font-weight: 700;
+      font-size: 0.95rem; width: 100%; max-width: 500px; margin: 8px auto;
+      text-align: center; display: flex; justify-content: space-between; align-items: center;
+    }
+    button.week-toggle-btn:hover { background-color: #dcdad3; }
+    button.week-toggle-btn::after { content: '▼'; font-size: 0.8rem; margin-left: 10px; }
+    button.week-toggle-btn.active::after { content: '▲'; }
+    .slot-group {
+      display: none; flex-direction: column; gap: 16px; align-items: center;
+      margin-top: 15px; margin-bottom: 20px; width: 100%; max-width: 500px;
+    }
+    .day-block { width: 100%; background: #ffffff; padding: 12px 15px; border-radius: 8px; border: 1px solid #e0e0e0; text-align: center; }
+    .day-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; text-transform: capitalize; }
+    .time-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .time-badge {
+      background-color: var(--accent); color: #ffffff; text-decoration: none;
+      padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 0.9rem;
+      display: inline-block; transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06); flex: 1 1 calc(50% - 10px); max-width: 200px; text-align: center;
+    }
+    .time-badge:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+    footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }
+  </style>
+</head>
+<body>
 
+  <header>
+    <h1>Bodywork Unterhaching</h1>
+    <p style="margin: 5px 0 0 0; color: var(--subtext); font-size: 0.95rem;">Live-Terminbuchung</p>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html" style="color: #a3e4d7;">🏠 Home</a>
+    <a href="index.html#angebot">Angebot</a>
+    <a href="index.html#gutscheine">Gutscheine</a>
+    <a href="index.html#ueber-mich">Über mich</a>
+  </nav>
+
+  <div class="container">
+    <section style="padding: 0; background: transparent; box-shadow: none;">
+      <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+        <h2 id="calendar-title" style="font-size: 1.35rem; line-height: 1.3; margin: 0 0 15px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine</h2>
+        
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
+          Wähle direkt einen verfügbaren Termin aus:
+        </p>
+
+        <div id="dynamic-weeks-container" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+          <div style="color: #666; font-size: 0.95rem;">Termine werden geladen...</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
+  </footer>
+
+  <script>
+    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
+    const phone = '4915560764392';
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
+    const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+    // Erkennt welche Massage von der Hauptseite mitgegeben wurde
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentSelectedMassage = urlParams.get('massage') || 'Sportmassage (60 Min.)';
+
+    document.getElementById('calendar-title').textContent = `Freie Termine – ${currentSelectedMassage}`;
+
+    function toggleGroup(groupId, btn) {
+      const group = document.getElementById(groupId);
+      if (group) {
+        const isHidden = group.style.display === 'none' || group.style.display === '';
+        group.style.display = isHidden ? 'flex' : 'none';
+        btn.classList.toggle('active', isHidden);
+      }
+    }
+
+    function formatShortDate(dateObj) {
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      return `${d}.${m}.`;
+    }
+
+    function getWeekRange(dateObj) {
+      const d = new Date(dateObj);
+      const day = d.getDay();
+      const diffToMonday = d.getDate() - day + (day === 0 ? -6 : 1);
+      const monday = new Date(d.setDate(diffToMonday));
+      const saturday = new Date(monday);
+      saturday.setDate(monday.getDate() + 5);
+
+      return {
+        key: `${monday.getFullYear()}-${monday.getMonth()+1}-${monday.getDate()}`,
+        mondayObj: monday,
+        saturdayObj: saturday,
+        label: `Woche vom ${formatShortDate(monday)} bis ${formatShortDate(saturday)}`
+      };
+    }
+
+    async function loadSlots() {
+      let container = document.getElementById('dynamic-weeks-container');
+      if (!container) return;
+
+      try {
+        const response = await fetch(csvUrl);
+        const rawCsvData = await response.text();
+        processAndRenderSlots(rawCsvData);
+      } catch (err) {
+        container.innerHTML = '<div style="color: #c53030; font-size: 0.95rem;">Fehler beim Laden der Termine.</div>';
+      }
+    }
+
+    function processAndRenderSlots(csvText) {
+      let container = document.getElementById('dynamic-weeks-container');
+      if (!container) return;
+
+      const lines = csvText.split('\n');
+      const weeksMap = {};
+      const now = new Date();
+
+      lines.forEach((line, index) => {
+        if (index === 0 || !line.trim()) return;
+        const cols = line.split(',').map(c => c.replace(/"/g, '').trim());
+        if (cols.length < 2) return;
+
+        const dateStr = cols[0];
+        const timesStr = cols[1];
+        const status = cols[3] ? cols[3].toLowerCase() : '';
+
+        if (!dateStr || !timesStr) return;
+        if (status !== 'frei') return;
+
+        const dateParts = dateStr.split('.');
+        if (dateParts.length !== 3) return;
+
+        const dateObj = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+        if (isNaN(dateObj.getTime())) return;
+
+        const todayReset = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        if (dateObj < todayReset) return;
+
+        const weekInfo = getWeekRange(dateObj);
+        if (!weeksMap[weekInfo.key]) {
+          weeksMap[weekInfo.key] = {
+            label: weekInfo.label,
+            mondayObj: weekInfo.mondayObj,
+            daysMap: {}
+          };
+        }
+
+        const times = timesStr.split(';').map(t => t.trim()).filter(t => t);
+        if (times.length > 0) {
+          if (!weeksMap[weekInfo.key].daysMap[dateStr]) {
+            weeksMap[weekInfo.key].daysMap[dateStr] = {
+              dateObj: dateObj,
+              dateStr: dateStr,
+              dayName: days[dateObj.getDay()],
+              times: []
+            };
+          }
+          times.forEach(t => {
+            if (!weeksMap[weekInfo.key].daysMap[dateStr].times.includes(t)) {
+              weeksMap[weekInfo.key].daysMap[dateStr].times.push(t);
+            }
+          });
+        }
+      });
+
+      const sortedWeeksKeys = Object.keys(weeksMap).sort((a, b) => weeksMap[a].mondayObj - weeksMap[b].mondayObj);
+
+      if (sortedWeeksKeys.length === 0) {
+        container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Derzeit sind keine freien Termine eingetragen.</div>';
+        return;
+      }
+
+      container.innerHTML = '';
+
+      sortedWeeksKeys.forEach((weekKey, index) => {
+        const weekData = weeksMap[weekKey];
+        const groupId = `week-group-${index}`;
+
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = `week-toggle-btn ${index === 0 ? 'active' : ''}`;
+        toggleBtn.textContent = weekData.label;
+        toggleBtn.onclick = function() { toggleGroup(groupId, this); };
+
+        const slotGroup = document.createElement('div');
+        slotGroup.id = groupId;
+        slotGroup.className = 'slot-group';
+        slotGroup.style.display = index === 0 ? 'flex' : 'none';
+
+        const sortedDays = Object.values(weekData.daysMap).sort((a, b) => a.dateObj - b.dateObj);
+
+        sortedDays.forEach(dayData => {
+          const dayBlock = document.createElement('div');
+          dayBlock.className = 'day-block';
+
+          const dayTitle = document.createElement('div');
+          dayTitle.className = 'day-title';
+          dayTitle.textContent = `${dayData.dayName}, ${dayData.dateStr}`;
+          dayBlock.appendChild(dayTitle);
+
+          const timeGrid = document.createElement('div');
+          timeGrid.className = 'time-grid';
+
+          dayData.times.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+          dayData.times.forEach(time => {
+            const timeBadge = document.createElement('a');
+            timeBadge.className = 'time-badge';
+            
+            const msg = encodeURIComponent(`Hallo Rüdiger, ich möchte gerne folgenden Termin buchen: ${currentSelectedMassage} am ${dayData.dayName}, ${dayData.dateStr} um ${time} Uhr.`);
+            timeBadge.href = `https://wa.me/${phone}?text=${msg}`;
+            timeBadge.target = '_blank';
+            timeBadge.textContent = `${time} Uhr`;
+
+            timeGrid.appendChild(timeBadge);
+          });
+
+          dayBlock.appendChild(timeGrid);
+          slotGroup.appendChild(dayBlock);
+        });
+
+        container.appendChild(toggleBtn);
+        container.appendChild(slotGroup);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadSlots);
+  </script>
+</body>
+</html>
